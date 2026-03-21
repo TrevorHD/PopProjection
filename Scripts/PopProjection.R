@@ -49,8 +49,7 @@ A0.create <- function(values, stage.names = NULL){
 ##### Project population ----------------------------------------------------------------------------------
 
 # Function to project population
-pop.project <- function(steps, A, A0, output.raw = FALSE, output.integer = FALSE,
-                        graph = "none"){
+pop.project <- function(steps, A, A0, output.raw = FALSE, output.integer = FALSE, graph = "none"){
   
   # steps: number of time steps to project over
   # A: transition matrix with dimensions n x n
@@ -93,24 +92,25 @@ pop.project <- function(steps, A, A0, output.raw = FALSE, output.integer = FALSE
   
   # Plot absolute abundances
   if(graph == "abundance"){
-    par(mar = c(5, 5, 4, 2))
-    plot(0, 0, pch = "", ylim = c(0, 1.1*max(counts)), xlim = c(0, steps + 1), 
-         xlab = "Time",  ylab = "Abundance", xaxt = "n", cex.lab = 1.8, cex.axis = 1.3)
+    par(mar = c(4, 4, 2, 1), mgp = c(2, 0.7, 0))
+    plot(0, 0, ylim = c(0, 1.1*max(counts)), xlim = c(0, steps), cex.lab = 1.60, cex.axis = 1.15, 
+         xlab = "Time",  ylab = "Abundance", xaxt = "n", pch = "")
     for(i in 1:nrow(counts)){
-      points(counts[i, ], col = rainbow(nrow(counts))[i], type = "l", lwd = 2)}
-    axis(1, at = seq(1, steps + 1), labels = seq(0, steps), cex.axis = 1.3)
+      points(0:(ncol(counts) - 1), counts[i, ], col = rainbow(nrow(counts))[i], type = "l", lwd = 2)}
+    axis(1, at = seq(0, steps), labels = seq(0, steps), cex.axis = 1.15)
     legend("topleft", col = rainbow(nrow(counts)), lwd = rep(2, nrow(counts)), 
            legend = if(is.null(rownames(counts))){1:nrow(counts)} else {rownames(counts)}, 
            bty = "n")}
   
   # Plot relative abundances
   if(graph == "proportions"){
-    par(mar = c(5, 5, 4, 2))
-    plot(0, 0, pch = "", ylim = c(0, 1), xlim = c(0, steps + 1), 
-         xlab = "Time",  ylab = "Proportional Abundance", xaxt = "n", cex.lab = 1.8, cex.axis = 1.3)
-    for(i in 1:nrow(counts)){
-      points(counts.prop[i, ], col = rainbow(nrow(counts.prop))[i], type = "l", lwd = 2)}
-    axis(1, at = seq(1, steps + 1), labels = seq(0, steps), cex.axis = 1.3)
+    par(mar = c(4, 4, 2, 1), mgp = c(2, 0.7, 0))
+    plot(0, 0, ylim = c(0, 1), xlim = c(0, steps), cex.lab = 1.60, cex.axis = 1.15,
+         xlab = "Time",  ylab = "Proportional Abundance", xaxt = "n", pch = "")
+    for(i in 1:nrow(counts.prop)){
+      points(0:(ncol(counts.prop) - 1), counts.prop[i, ], col = rainbow(nrow(counts.prop))[i],
+             type = "l", lwd = 2)}
+    axis(1, at = seq(0, steps), labels = seq(0, steps), cex.axis = 1.15)
     legend("topleft", col = rainbow(nrow(counts.prop)), lwd = rep(2, nrow(counts.prop)), 
            legend = if(is.null(rownames(counts.prop))){1:nrow(counts.prop)} else {rownames(counts.prop)}, 
            bty = "n")}
@@ -149,7 +149,13 @@ A <- A.create(c(0,    0,    3,    2,
 A0 <- A0.create(c(50, 50, 50, 50),
                 stage.names = c("Juvenile", "Sub-adult", "Adult (young)", "Adult (old)"))
 
-# Run population projection
+# Run population projection and graph both counts and proportions
+jpeg(filename = "PPPlots1.jpeg", width = 700, height = 400, units = "px")
 pop.project(steps = 10, A = A, A0 = A0, graph = "abundance",
             output.raw = FALSE, output.integer = TRUE)
+dev.off()
+jpeg(filename = "PPPlots2.jpeg", width = 700, height = 400, units = "px")
+pop.project(steps = 10, A = A, A0 = A0, graph = "proportions",
+            output.raw = FALSE, output.integer = TRUE)
+dev.off()
 
