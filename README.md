@@ -8,13 +8,13 @@ A program projecting population growth given a transition matrix and initial abu
 
 ## Scripts
 
-**PopProjection** *(.R)* - Script for simulating stage-based population growth given initial conditions and a transition matrix.
+**PopProjection** *(.R)* - Script for simulating stage-based population growth given initial abundance per stage and a transition matrix quantifying probability of movement between stages.
 
 ## Figures
 
-**PPPlots1** *(.jpeg)* - Plots showing, for a hypothetical population, abundance for each age/stage/class as a function of time.
+**PPPlots1** *(.jpeg)* - Plots showing, for a hypothetical population with four different life stages, abundance of each stage as a function of time.
 
-**PPPlots2** *(.jpeg)* - Plots showing, for a hypothetical population, proportional abundance for each age/stage/class as a function of time.
+**PPPlots2** *(.jpeg)* - Plots showing, for a hypothetical population with four different life stages, proportional abundance for each stage as a function of time.
 
 <br/>
 
