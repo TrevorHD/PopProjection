@@ -1,11 +1,18 @@
+##### Prepare workspace -----------------------------------------------------------------------------------
+
+# Set working directory
+setwd("~/GitHub/PopProjection")
+
+
+
+
+
 ##### Create transition matrix ----------------------------------------------------------------------------
 
 # Function that creates a transition matrix given number and names of stages
 A.create <- function(values, stage.names = NULL){
   
   # Let values be a vector of numerics representing the values of the transition matrix 
-  # (from left to right and top to bottom)
-
   # Let stage.names be a vector of characters representing the names of stages or classes
   
   # Create matrix
@@ -28,8 +35,6 @@ A.create <- function(values, stage.names = NULL){
 A0.create <- function(values, stage.names = NULL){
   
   # Let values be a vector of numerics representing the values of the transition matrix 
-  # (from left to right and top to bottom)
-  
   # Let stage.names be a vector of characters representing the names of stages or classes
   
   # Create matrix
@@ -150,11 +155,11 @@ A0 <- A0.create(c(50, 50, 50, 50),
                 stage.names = c("Juvenile", "Sub-adult", "Adult (young)", "Adult (old)"))
 
 # Run population projection and graph both counts and proportions
-jpeg(filename = "PPPlots1.jpeg", width = 1000, height = 500, units = "px")
+jpeg(filename = "Figures/PP_Plots_1.jpeg", width = 1000, height = 500, units = "px")
 pop.project(steps = 10, A = A, A0 = A0, graph = "abundance",
             output.raw = FALSE, output.integer = TRUE)
 dev.off()
-jpeg(filename = "PPPlots2.jpeg", width = 1000, height = 500, units = "px")
+jpeg(filename = "Figures/PP_Plots_2.jpeg", width = 1000, height = 500, units = "px")
 pop.project(steps = 10, A = A, A0 = A0, graph = "proportions",
             output.raw = FALSE, output.integer = TRUE)
 dev.off()
