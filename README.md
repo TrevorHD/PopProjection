@@ -1,29 +1,29 @@
 # Overview
 
-A program projecting population growth given a transition matrix and initial abundances of each age/stage/class. The program graphs abundance and proportional abundance over time, and outputs key values such as stable age distribution (right eigenvector of the transition matrix) stable growth rate (dominant eigenvalue of transition matrix), and both abundance and proportional abundances at the final time step.
+A program projecting population growth given a transition matrix and initial abundances of each age/stage/class. The program graphs abundance and proportional abundance over time, and outputs key values such as stable age distribution (right eigenvector of the transition matrix), stable growth rate (dominant eigenvalue of transition matrix), and both abundance and proportional abundances at the final time step.
 
 <br/>
 
 # Files
 
-## Scripts
-
-**PopProjection** *(.R)* - Script for simulating stage-based population growth given initial abundance per stage and a transition matrix quantifying probability of movement between stages.
-
 ## Figures
 
-**PPPlots1** *(.jpeg)* - Plots showing, for a hypothetical population with four different life stages, abundance of each stage as a function of time.
+**PP_Plots_1** *(.jpeg)* - Plots of abundance as a function of time for a hypothetical population with four different life stages.
 
-**PPPlots2** *(.jpeg)* - Plots showing, for a hypothetical population with four different life stages, proportional abundance for each stage as a function of time.
+**PP_Plots_2** *(.jpeg)* - Plots of proportional abundance as a function of time for a hypothetical population with four different life stages.
+
+## Scripts
+
+**PP_Script** *(.R)* - Script for running simulations and generating figures.
 
 <br/>
 
 # Featured Images
 
-Plots showing, for a hypothetical species with four different life stages, the abundance of each stage as a function of time after starting at a population of 200 with 50 individuals per stage.
+Abundance as a function of time for a hypothetical population with four different life stages. In this example, the starting population was 200, with 50 individuals per stage.
 
-<kbd>![](https://github.com/TrevorHD/PopProjection/blob/master/Figures/PPPlots1.jpeg)</kbd>
+<kbd>![](https://github.com/TrevorHD/PopProjection/blob/master/Figures/PP_Plots_1.jpeg)</kbd>
 
-Plots showing, for the same hypothetical species with four different life stages, how the proportional aboundance of each stage for the aforementioned population changes over time and eventually stabilises.
+Proportional abundance as a function of time for the same population shown in the previous image. The proportional abundance of each life stage eventually stabilises as time goes on, with the distribution of ages equal to the right eigenvector of the transition matrix.
 
-<kbd>![](https://github.com/TrevorHD/PopProjection/blob/master/Figures/PPPlots2.jpeg)</kbd>
+<kbd>![](https://github.com/TrevorHD/PopProjection/blob/master/Figures/PP_Plots_2.jpeg)</kbd>
